@@ -26,6 +26,14 @@ jobs:
                   distribution: 'temurin'
                   cache: maven
 
+            # Setting up Chrome for Selenium
+            - name: Setup Chrome Driver
+              uses: nanasess/setup-chromedriver@v1.0.1
+
+            - name: Run Chrome Headless
+              run: |
+                  google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 &
+
             - name: 🧬Install All Dependencies with Maven
               run: mvn -B package --file pom.xml
 
