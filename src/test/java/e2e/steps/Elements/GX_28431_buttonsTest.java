@@ -13,7 +13,7 @@ public class GX_28431_buttonsTest extends TestBase {
 
     @BeforeEach
     public void precondition() {
-        web.get(BASE_URL + "buttons");
+        web.get(BASE_URL + "/buttons");
     }
 
     @DisplayName("28432 | TC01: Validate button 'Double Click Me'")
