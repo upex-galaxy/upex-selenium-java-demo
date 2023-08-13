@@ -22,4 +22,13 @@ public class GX_28431_buttonsTest extends TestBase {
         String doubleClickMessage = get.ById("doubleClickMessage").getText();
         then.shouldBeEqual(doubleClickMessage, "You have done a double click");
     }
+
+    @DisplayName("28432 | TC02: Validate button 'Right Click Me'")
+    @Test
+    public void TC02() throws InterruptedException {
+        WebElement rightClickMeBttn = get.ById("rightClickBtn");
+        Do.rightClick(rightClickMeBttn);
+        String rightClickMessage = get.ById("rightClickMessage").getText();
+        then.shouldBeEqual(rightClickMessage, "You have done a right click");
+    }
 }
