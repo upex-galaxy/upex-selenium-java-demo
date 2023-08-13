@@ -71,7 +71,6 @@
                     <runOrder>alphabetical</runOrder>
                     <argLine>-Duser.language=en</argLine>
                     <argLine>-Xmx512m</argLine>
-                    <argLine>-XX:MaxPermSize=256m</argLine>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
                     <systemPropertyVariables>
                         <project.dir>${basedir}</project.dir>
@@ -187,6 +186,12 @@
             <artifactId>slf4j-api</artifactId>
             <version>2.0.7</version>
         </dependency>
+    <!-- SLF4J Implementation using Logback -->
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.2.3</version>
+    </dependency>
 
     </dependencies>
 

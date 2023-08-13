@@ -29,10 +29,12 @@ public class TestBase {
 
     @AfterEach
     public void tearDown() {
-        try {
-            web.quit();
-        } catch (Exception log) {
-            System.out.println("Error while closing browser: " + log.getMessage());
+        if (web != null) {
+            try {
+                web.quit();
+            } catch (Exception log) {
+                System.out.println("Error while closing browser: " + log.getMessage());
+            }
         }
     }
 }

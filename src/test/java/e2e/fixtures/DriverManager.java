@@ -10,6 +10,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class DriverManager {
 
     public WebDriver setChromeDriver() {
+        // Especifica la versión del chromedriver que quieres usar
+        WebDriverManager.chromedriver().driverVersion("VERSION_AQUI").setup();
+
         ChromeOptions options = new ChromeOptions();
         String headlessValue = System.getProperty("headless");
         if (headlessValue != null && "true".equalsIgnoreCase(headlessValue)) {
