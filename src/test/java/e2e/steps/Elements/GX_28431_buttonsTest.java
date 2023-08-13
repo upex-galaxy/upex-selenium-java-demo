@@ -1,5 +1,7 @@
 package e2e.steps.Elements;
 
+import java.util.List;
+
 import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -30,5 +32,15 @@ public class GX_28431_buttonsTest extends TestBase {
         Do.rightClick(rightClickMeBttn);
         String rightClickMessage = get.ById("rightClickMessage").getText();
         then.shouldBeEqual(rightClickMessage, "You have done a right click");
+    }
+
+    @DisplayName("28432 | TC03: Validate button 'Click Me'")
+    @Test
+    public void TC03() throws InterruptedException {
+        List<WebElement> clickButtons = get.Selectors("[type='button']:not(.navbar-toggler)");
+        clickButtons.get(2).click();
+
+        String clickButtonText = get.ById("dynamicClickMessage").getText();
+        then.shouldBeEqual(clickButtonText, "You have done a dynamic click");
     }
 }
