@@ -26,9 +26,11 @@ jobs:
                   distribution: 'temurin'
                   cache: maven
 
-            # Setting up Chrome for Selenium
-            - name: Setup Chrome Driver
-              uses: nanasess/setup-chromedriver@v1.0.1
+            - name: Setup ChromeDriver
+              uses: webdriverio/github-action@v1
+              with:
+                  browserName: 'chrome'
+                  browserVersion: 'latest'
 
             - name: Run Chrome Headless
               run: |
