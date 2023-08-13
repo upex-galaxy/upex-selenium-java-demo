@@ -1,6 +1,11 @@
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
 
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
 name: 🤖CI run Regression in QA🧪
 run-name: ${{github.actor}}👨🏻‍🔬 run Regression in ${{github.ref_name}}
 
@@ -21,19 +26,8 @@ jobs:
                   distribution: 'temurin'
                   cache: maven
 
-            - name: Setup ChromeDriver
-              uses: nanasess/setup-chromedriver@v2
-              with:
-                  chromedriver-version: '88.0.4324.96'
-
-            - name: Setup Xvfb (Optional)
-              run: |
-                  export DISPLAY=:99
-                  chromedriver --url-base=/wd/hub &
-                  sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
-
             - name: 🧬Install All Dependencies with Maven
               run: mvn -B package --file pom.xml
 
             - name: 🧪Run Selenium tests
-              run: mvn -B -X -Dtest=GX_28431_buttonsTest -Dheadless=true test
+              run: mvn verify -Dit.test=GX_28431_buttonsTest -Dheadless=true
