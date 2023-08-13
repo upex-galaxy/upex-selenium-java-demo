@@ -30,4 +30,4 @@ jobs:
               run: mvn -B package --file pom.xml
 
             - name: 🧪Run Selenium tests
-              run: mvn verify -Dit.test=GX_28431_buttonsTest -Dheadless=true
+              run: mvn verify -B -Dit.test=GX_28431_buttonsTest -Dheadless=true
