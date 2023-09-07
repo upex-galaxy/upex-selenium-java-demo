@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
 import e2e.utils.Locator;
+import e2e.utils.Action;
 import e2e.utils.Assertion;
 import e2e.utils.Action;
 
@@ -22,7 +23,6 @@ public class TestBase {
         get = new Locator(web);
         then = new Assertion();
         Do = new Action(web);
-        web.get(BASE_URL);
         web.manage().window().maximize();
         web.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
