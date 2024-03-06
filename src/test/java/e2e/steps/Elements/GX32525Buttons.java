@@ -12,7 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class GX3_2525_Buttons {
+public class GX32525Buttons {
 	WebDriver driver = new FirefoxDriver();
 
 	@BeforeEach
