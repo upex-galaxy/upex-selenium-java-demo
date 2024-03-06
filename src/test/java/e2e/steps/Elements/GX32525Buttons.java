@@ -1,33 +1,38 @@
 package e2e.steps.Elements;
 
-import static org.junit.Assert.*;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class GX32525Buttons {
-	WebDriver driver;
+import io.qameta.allure.*;
+import static io.qameta.allure.SeverityLevel.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.IOException;
+
+import e2e.fixtures.TestBase;
+
+//* Tech Debt: GX3-253 = https://upexgalaxy26.atlassian.net/browse/GX3-253
+@Epic("Elements Component")
+@Feature("Buttons")
+@Story("GX3-2525 DemoQA | Buttons ")
+public class GX32525Buttons extends TestBase {
 
 	@BeforeEach
-	public void setup() {
-		driver = new FirefoxDriver();
-		String endpoint = "https://demoqa.com/buttons";
-		driver.get(endpoint);
+	public void precondition() {
+		web.get("https://demoqa.com/buttons");
 	}
 
-	@DisplayName("2526 | TC01:Validar el funcionamiento del double click button")
 	@Test
-	public void TC01() {
-		WebElement button = driver.findElement(By.id("doubleClickBtn"));
-		new Actions(driver).doubleClick(button).perform();
-		WebElement msjDbButton = driver.findElement(By.id("doubleClickMessage"));
+	@Severity(NORMAL)
+	@Issue("https://upexgalaxy38.atlassian.net/browse/GX3-2525")
+	@Description("Este caso de prueba va a validar que el usuario pueda hace doble click")
+	@DisplayName("2526 | TC01:Validar el funcionamiento del double click button")
+	public void TC01_DoubleClick(TestInfo testInfo) throws InterruptedException, IOException {
+
+		WebElement button = get.ById("doubleClickBtn");
+		new Actions(web).doubleClick(button).perform();
+		WebElement msjDbButton = get.ById("doubleClickMessage");
 
 		String msj = msjDbButton.getText();
 		assertEquals("You have done a double click", msj);
@@ -35,8 +40,8 @@ public class GX32525Buttons {
 
 	@AfterEach
 	public void tearDown() {
-		if (driver != null) {
-			driver.quit();
+		if (web != null) {
+			web.quit();
 		}
 	}
 }
