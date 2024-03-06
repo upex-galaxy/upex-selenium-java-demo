@@ -13,10 +13,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class GX32525Buttons {
-	WebDriver driver = new FirefoxDriver();
+	WebDriver driver;
 
 	@BeforeEach
-	public void precondition() {
+	public void setup() {
+		driver = new FirefoxDriver();
 		String endpoint = "https://demoqa.com/buttons";
 		driver.get(endpoint);
 	}
@@ -34,6 +35,8 @@ public class GX32525Buttons {
 
 	@AfterEach
 	public void tearDown() {
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 }
