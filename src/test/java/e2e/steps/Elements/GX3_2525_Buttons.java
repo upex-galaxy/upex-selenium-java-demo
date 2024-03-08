@@ -26,7 +26,7 @@ import io.qameta.allure.Story;
 @Epic("Elements Component")
 @Feature("Buttons")
 @Story("GX3-2525 DemoQA | Buttons ")
-public class GX32525Buttons extends TestBase {
+public class GX3_2525_Buttons extends TestBase {
 
 	@BeforeEach
 	public void precondition() {
