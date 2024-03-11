@@ -47,7 +47,6 @@ public class GX3_2658_TextBox extends TestBase {
 		web.get("https://demoqa.com/text-box");
 
 		WebElement campoFullName = web.findElement(By.id("userName"));
-
 		campoFullName.sendKeys("Braian Ezequiel");
 
 		String valorCampoFullName = campoFullName.getAttribute("value");
@@ -74,7 +73,6 @@ public class GX3_2658_TextBox extends TestBase {
 		campoEmail.sendKeys("braianef96@gmail.com");
 
 		String valorCampoEmail = campoEmail.getAttribute("value");
-
 		assertEquals(valorCampoEmail, "braianef96@gmail.com",
 				"El campo de nombre completo no contiene el valor esperado.");
 	}
@@ -94,12 +92,34 @@ public class GX3_2658_TextBox extends TestBase {
 		web.get("https://demoqa.com/text-box");
 
 		WebElement campoCurrentAddress = web.findElement(By.id("currentAddress"));
-
 		String textoIngresado = "Carrer Masarbones, 8";
 		campoCurrentAddress.sendKeys(textoIngresado);
 
 		String valorCampoCurrentAddress = campoCurrentAddress.getAttribute("value");
 		assertEquals(valorCampoCurrentAddress, textoIngresado,
+				"El campo de dirección actual no contiene el valor esperado.");
+	}
+
+	@Test
+	@Severity(NORMAL)
+	@Issue("https://upexgalaxy38.atlassian.net/browse/GX3-2658")
+	@Description("Este caso de prueba va a validar que el usuario pueda rellenar el campo 'Permanent Address'")
+	@DisplayName("2659 | TC04: Validar rellenar el campo 'Permanent Address' con datos correctos")
+	public void TC04_PermanentAddress() throws InterruptedException {
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--headless");
+		chromeOptions.addArguments("--window-size=1920,1080");
+
+		web = new ChromeDriver(chromeOptions);
+
+		web.get("https://demoqa.com/text-box");
+
+		WebElement campoPermanentAddress = web.findElement(By.id("permanentAddress"));
+		String textoIngresado = "Lavalleja 3565, Cordoba";
+		campoPermanentAddress.sendKeys(textoIngresado);
+
+		String valorCampoPermanentAddress = campoPermanentAddress.getAttribute("value");
+		assertEquals(valorCampoPermanentAddress, textoIngresado,
 				"El campo de dirección actual no contiene el valor esperado.");
 	}
 
