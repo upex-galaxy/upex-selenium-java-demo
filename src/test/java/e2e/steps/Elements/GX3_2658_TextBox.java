@@ -1,6 +1,7 @@
 package e2e.steps.Elements;
 
 import static io.qameta.allure.SeverityLevel.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.AfterClass;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,16 +38,22 @@ public class GX3_2658_TextBox extends TestBase {
 	@Description("Este caso de prueba va a validar que el usuario pueda rellenar el campo 'Full Name'")
 	@DisplayName("2659 | TC01: Validar rellenar el campo 'Full Name' con datos correctos")
 	public void TC01_FullName() throws InterruptedException {
+
 		ChromeOptions chromeOptions = new ChromeOptions();
 		chromeOptions.addArguments("--headless");
 		chromeOptions.addArguments("--window-size=1920,1080");
 
 		web = new ChromeDriver(chromeOptions);
-
 		web.get("https://demoqa.com/text-box");
 
 		WebElement campoFullName = web.findElement(By.id("userName"));
+
 		campoFullName.sendKeys("Braian Ezequiel");
+
+		String valorCampoFullName = campoFullName.getAttribute("value");
+
+		assertEquals(valorCampoFullName, "Braian Ezequiel",
+				"El campo de nombre completo no contiene el valor esperado.");
 	}
 
 	@AfterClass
