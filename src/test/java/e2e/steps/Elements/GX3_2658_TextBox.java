@@ -56,6 +56,29 @@ public class GX3_2658_TextBox extends TestBase {
 				"El campo de nombre completo no contiene el valor esperado.");
 	}
 
+	@Test
+	@Severity(NORMAL)
+	@Issue("https://upexgalaxy38.atlassian.net/browse/GX3-2658")
+	@Description("Este caso de prueba va a validar que el usuario pueda rellenar el campo 'Email'")
+	@DisplayName("2659 | TC02: Validar rellenar el campo 'Email' con datos y formato correctos")
+	public void TC02_Email() throws InterruptedException {
+
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--headless");
+		chromeOptions.addArguments("--window-size=1920,1080");
+
+		web = new ChromeDriver(chromeOptions);
+		web.get("https://demoqa.com/text-box");
+
+		WebElement campoEmail = web.findElement(By.id("userEmail"));
+		campoEmail.sendKeys("braianef96@gmail.com");
+
+		String valorCampoEmail = campoEmail.getAttribute("value");
+
+		assertEquals(valorCampoEmail, "braianef96@gmail.com",
+				"El campo de nombre completo no contiene el valor esperado.");
+	}
+
 	@AfterClass
 	public void tearDown() {
 		web.quit();
