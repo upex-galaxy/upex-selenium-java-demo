@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
 import e2e.fixtures.TestBase;
@@ -30,6 +32,15 @@ public class GX3_2525_Buttons extends TestBase {
 
 	@BeforeEach
 	public void precondition() {
+		// Configurar opciones de Chrome
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--headless");
+		chromeOptions.addArguments("--window-size=1920,1080");
+
+		// Iniciar el navegador con las opciones configuradas
+		web = new ChromeDriver(chromeOptions);
+
+		// Abrir la página de prueba
 		web.get("https://demoqa.com/buttons");
 	}
 
@@ -39,10 +50,6 @@ public class GX3_2525_Buttons extends TestBase {
 	@Description("Este caso de prueba va a validar que el usuario pueda hacer doble clic en el botón 'Double Click Me' y debe aparecer el mensaje de 'You have done a double click' ")
 	@DisplayName("2526 | TC01:Validar el funcionamiento del botón 'double click button'")
 	public void TC01_DoubleClick(TestInfo testInfo) throws InterruptedException, IOException {
-
-		// WebElement buttonDatos =
-		// web.findElement(By.cssSelector(".fc-button.fc-cta-consent.fc-primary-button"));
-		// buttonDatos.click();
 
 		WebElement button = web.findElement(By.id("doubleClickBtn"));
 		new Actions(web).doubleClick(button).perform();
@@ -64,11 +71,7 @@ public class GX3_2525_Buttons extends TestBase {
 
 		Thread.sleep(222);
 
-		// WebElement buttonDatos =
-		// web.findElement(By.cssSelector(".fc-button.fc-cta-consent.fc-primary-button"));
-		// new Actions(web).click(buttonDatos).perform();
-
-		WebElement button = get.ById("rightClickBtn");
+		WebElement button = web.findElement(By.id("rightClickBtn"));
 		new Actions(web).contextClick(button).perform();
 
 		Thread.sleep(20);
@@ -86,10 +89,6 @@ public class GX3_2525_Buttons extends TestBase {
 	@DisplayName("2526 | TC03: Validar el funcionamiento del botón 'Click'")
 	public void TC03_Click(TestInfo testInfo) throws InterruptedException, IOException {
 		Thread.sleep(222);
-
-		// WebElement buttonDatos =
-		// web.findElement(By.cssSelector(".fc-button.fc-cta-consent.fc-primary-button"));
-		// buttonDatos.click();
 
 		List<WebElement> buttons = web.findElements(By.cssSelector("button.btn.btn-primary"));
 		WebElement button = buttons.get(2);
