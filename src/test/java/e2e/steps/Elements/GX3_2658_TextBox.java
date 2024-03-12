@@ -123,6 +123,46 @@ public class GX3_2658_TextBox extends TestBase {
 				"El campo de dirección actual no contiene el valor esperado.");
 	}
 
+	@Test
+	@Severity(NORMAL)
+	@Issue("https://upexgalaxy38.atlassian.net/browse/GX3-2658")
+	@Description("Este caso de prueba va a validar que el usuario pueda rellenar los datos y enviarlos haciendo click en el botón 'Submit'")
+	@DisplayName("2659 | TC05: Validar poder enviar los datos haciendo click en el botón 'Submit'")
+	public void TC05_Submit() throws InterruptedException {
+
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--headless");
+		chromeOptions.addArguments("--window-size=1920,1080");
+
+		web = new ChromeDriver(chromeOptions);
+
+		web.get("https://demoqa.com/text-box");
+
+		WebElement campoFullName = web.findElement(By.id("userName"));
+		campoFullName.sendKeys("Braian Ezequiel");
+
+		WebElement campoEmail = web.findElement(By.id("userEmail"));
+		campoEmail.sendKeys("braianef96@gmail.com");
+
+		WebElement campoCurrentAddress = web.findElement(By.id("currentAddress"));
+		String textoIngresado = "Carrer Masarbones, 8";
+		campoCurrentAddress.sendKeys(textoIngresado);
+
+		WebElement campoPermanentAddress = web.findElement(By.id("permanentAddress"));
+		String texto2Ingresado = "Lavalleja 3565, Cordoba";
+		campoPermanentAddress.sendKeys(texto2Ingresado);
+
+		WebElement button = web.findElement(By.id("submit"));
+		button.click();
+
+		Thread.sleep(2000);
+
+		WebElement confirmationElement = web.findElement(By.id("output"));
+		String confirmationText = confirmationElement.getText();
+		assertTrue(confirmationText.contains(textoIngresado));
+		assertTrue(confirmationText.contains(texto2Ingresado));
+	}
+
 	@AfterClass
 	public void tearDown() {
 		web.quit();
