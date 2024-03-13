@@ -65,7 +65,7 @@ public class GX3_2525_Buttons extends TestBase {
 	@Test
 	@Severity(NORMAL)
 	@Issue("https://upexgalaxy38.atlassian.net/browse/GX3-2525")
-	@Description("Este caso de prueba va a validar que el usuario pueda hacer click derecho en el botón de 'Right Click'")
+	@Description("Este caso de prueba va a validar que el usuario pueda hacer click derecho en el boton de 'Right Click'")
 	@DisplayName("2526 | TC02: Validar el funcionamiento del botón 'Right Click'")
 	public void TC02_RightClick(TestInfo testInfo) throws InterruptedException, IOException {
 
