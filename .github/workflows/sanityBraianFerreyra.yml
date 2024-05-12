@@ -4,7 +4,7 @@ run-name: ${{github.actor}}👨🏻‍🔬 ran SanityTest in ${{github.ref_name}
 #* El RUN de Pipeline para Sanity Test para verificación de archivos de prueba, tiene que usarse con su branch de tarea.
 on:
   push:
-    branches: ['GX3-2525-elements-buttons']
+    branches: ['GX3-2658-⚡️-tools-qa-elements-text-box-fill-form-and-submit']
 
 jobs:
   SanityTest:
@@ -26,7 +26,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: 🧪Run Selenium tests
-      run: mvn clean verify -D it.test=GX3_2525_Buttons -D headless=true
+      run: mvn clean verify -D it.test=GX3_2658_TextBox -D headless=true
 
     - name: 📊Upload Artifact Maven Report
       if: always()
@@ -44,7 +44,7 @@ jobs:
         password: ${{secrets.XRAY_CLIENT_SECRET}}
         testFormat: 'junit' #OPCIONES PARA CAMBIAR: 'junit' (para xml) o 'cucumber' (para json)
         testPaths: 'target/failsafe-reports/TEST-*.xml'
-        testExecKey: 'GX3-2532' #? EDITAR AQUÍ EL TEST EXECUTION A IMPORTAR LAS PRUEBAS.
+        testExecKey: 'GX3-2665' #? EDITAR AQUÍ EL TEST EXECUTION A IMPORTAR LAS PRUEBAS.
         projectKey: 'GX3' #? EDITAR EN CASO DE TRABAJAR CON OTRO PROYECTO.
 
   Ari-Slack-Notification:
